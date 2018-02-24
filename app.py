@@ -256,12 +256,13 @@ def add_tweet(new_tweets):
 def get_tweet(id):
     return list_tweet(id)
 
-def list_tweet(tweet_id):
+def list_tweet(user_id):
+    print (user_id)
     conn = sqlite3.connect('mydb.db')
     print ("Opened database successfully");
     api_list = []
     cursor = conn.cursor()
-    cursor.execute("SELECT * from tweets where id=?", (tweet_id,))
+    cursor.execute("SELECT * from tweets where id=?", (user_id,))
     data = cursor.fetchall()
     print (data)
     if len(data) == 0:
