@@ -1,7 +1,0 @@
-HTTP Method   URI                               Actions
-GET           http://localhost:5000/api/v1/info This responds back with the version
-GET           http://localhost:5000/api/v1/users This responds with the user list
-GET           http://localhost:5000/api/v1/users/[user_id]  The response will be the user details of the specified user_id
-POST          http://localhost:5000/api/v1/users This resource will create new users in the backend server with values from the object passed
-DELETE        http://localhost:5000/api/v1/users This resource will delete the user with the specified username passed in JSON format
-PUT           http://localhost:5000/api/v1/users/[user_id] This resource updates the user information of the specific user_id based on the JSON object passed as part of the API call.

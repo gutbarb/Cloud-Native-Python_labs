@@ -2,9 +2,8 @@
    Cloud Native Python - Chapter 02 - Building Microservices in Python
 '''
 
-from flask import Flask, jsonify, make_response, abort, request
-#from flask import jsonify
-#from flask import make_response
+from flask import Flask, jsonify, make_response, abort
+from flask import request, render_template
 import json
 import sqlite3
 from time import gmtime, strftime
@@ -195,18 +194,13 @@ def list_tweets():
     api_list=[]
     cursor = conn.execute("SELECT username, body, tweet_time, id from tweets")
     data = cursor.fetchall()
-#   print (">>>>> DATA: ",data)
-#   print (">>>>> len(DATA): ",len(data))
     if len(data) != 0:
-#       print (">>>>> len(DATA) - 2nd TIME!!: ",len(data))
         for row in data:
-#           print (">>>>> ROW: ",row)
             tweets = {}
             tweets['Tweet By'] = row [0]
             tweets['Body'] = row [1]
             tweets['Timestamp'] = row [2]
             tweets['id'] = row[3]
-#           print(">>>>>>>> Tweet added:",tweets)
             api_list.append(tweets)
     else:
         return api_list
@@ -231,9 +225,6 @@ def add_tweets():
 def add_tweet(new_tweets):
     conn = sqlite3.connect('mydb.db')
     print ("Opened database successfully");
-#   print (">>>>>> new_tweets['username']: ",new_tweets['username'])
-#   print (">>>>>> new_tweets['body']: ",new_tweets['body'])
-#   print (">>>>>> new_tweets['created_at']: ",new_tweets['created_at'])
     cursor = conn.cursor()
     cursor.execute("SELECT * from users where username=? ",\
      (new_tweets['username'],))
@@ -275,10 +266,6 @@ def list_tweet(user_id):
         user['tweet_time'] = data[0][3]
     conn.close()
     return jsonify(user)
-
-
-
-
 
 
 '''
