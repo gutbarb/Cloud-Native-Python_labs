@@ -275,7 +275,13 @@ def list_tweet(user_id):
 def adduser():
     return render_template('adduser.html')
 
+<<<<<<< HEAD
+@app.route('/addtweets')
+def addtweetjs():
+    return render_template('addtweets.html')
+=======
 
+>>>>>>> 0b4e22c782d5078b24557f2ec16c7420d335dca1
 
 
 
